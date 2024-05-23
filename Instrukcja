@@ -1,0 +1,43 @@
+Zgodnie z Clean Architecture, poszczególne projekty w rozwiązaniu powinny zawierać określone elementy. Poniżej znajduje się szczegółowy opis, co powinno znajdować się w każdym projekcie dla aplikacji Blazor:
+
+TaskManager Core (Domain Layer)
+Zawiera:
+
+Encje (Entities): Podstawowe modele biznesowe reprezentujące dane domeny.
+Interfejsy domenowe (Interfaces): Interfejsy, które definiują kontrakty dla repozytoriów i innych serwisów domenowych.
+Przykład zawartości:
+
+Entities/Task.cs: Definicja encji Task.
+Interfaces/ITaskRepository.cs: Interfejs repozytorium ITaskRepository.
+
+TaskManager Application (Use Cases)
+Zawiera:
+
+DTOs (Data Transfer Objects): Obiekty przenoszące dane między warstwami.
+Interfejsy usług aplikacyjnych (Interfaces): Interfejsy definiujące kontrakty dla usług aplikacyjnych.
+Implementacje usług aplikacyjnych (Services): Klasy implementujące logikę biznesową, wykorzystujące repozytoria z warstwy Core.
+Przykład zawartości:
+
+DTOs/TaskDto.cs: Definicja DTO TaskDto.
+Interfaces/ITaskService.cs: Interfejs serwisu ITaskService.
+Services/TaskService.cs: Implementacja serwisu TaskService.
+
+TaskManager Infrastructure (Data Access, Frameworks)
+Zawiera:
+
+Kontekst bazy danych (Data): Klasy kontekstowe dla Entity Framework lub innych ORM.
+Implementacje repozytoriów (Data): Klasy implementujące interfejsy repozytoriów z warstwy Core.
+Przykład zawartości:
+
+Data/TaskContext.cs: Definicja kontekstu bazy danych TaskContext.
+Data/TaskRepository.cs: Implementacja repozytorium TaskRepository.
+
+TaskManager Web (Presentation Layer)
+Zawiera:
+
+Komponenty Blazor (Pages, Components): Komponenty Blazor odpowiedzialne za interfejs użytkownika.
+Usługi (Services): Usługi zarejestrowane w DI, które komunikują się z warstwą Application.
+Przykład zawartości:
+
+Pages/TaskList.razor: Komponent Blazor wyświetlający listę zadań.
+Pages/AddTask.razor: Komponent Blazor umożliwiający dodawanie nowych zadań.
