@@ -97,3 +97,9 @@ POST /api/Tasks - Utwórz nowe zadanie
 PUT /api/Tasks/{id} - Zaktualizuj zadanie
 DELETE /api/Tasks/{id} - Usuń zadanie
 ```
+
+### Twórcy:
+```
+Dawid Pietruszka
+Dawid Mida
+```
