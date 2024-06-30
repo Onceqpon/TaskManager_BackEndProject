@@ -2,6 +2,9 @@
 using Core.Interfaces;
 using Application.DTOs;
 using Core.Entity;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -17,6 +20,10 @@ namespace Application.Services
         public async Task<CategoryDto> GetCategoryByIdAsync(int id)
         {
             var category = await _categoryRepository.GetByIdAsync(id);
+            if (category == null)
+            {
+                return null;
+            }
             return new CategoryDto { Id = category.Id, Name = category.Name };
         }
 
@@ -48,8 +55,11 @@ namespace Application.Services
 
         public async Task DeleteCategoryAsync(int id)
         {
-            await _categoryRepository.DeleteAsync(id);
+            var category = await _categoryRepository.GetByIdAsync(id);
+            if (category != null)
+            {
+                await _categoryRepository.DeleteAsync(category);
+            }
         }
     }
 }
-

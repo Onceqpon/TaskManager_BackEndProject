@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using WebAPI.Configuration;
 using WebAPI.Dto;
-using JWT.Algorithms;
 using JWT.Builder;
+using JWT.Algorithms;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.Extensions.Logging;
 using Core.Entity;
@@ -43,7 +43,8 @@ namespace WebAPI.Controllers
                 return Unauthorized();
             }
 
-            return Ok(new { Token = $"Bearer {CreateToken(logged)}" });
+            var token = CreateToken(logged);
+            return Ok(new AuthenticationResponseDto { Token = $"Bearer {token}" });
         }
 
         [HttpPost("register")]
@@ -84,5 +85,10 @@ namespace WebAPI.Controllers
                 .Issuer(_jwtSettings.Issuer)
                 .Encode();
         }
+    }
+
+    public class AuthenticationResponseDto
+    {
+        public string Token { get; set; }
     }
 }

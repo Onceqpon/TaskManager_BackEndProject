@@ -9,10 +9,12 @@ namespace WebAPI.Controllers
     public class TaskItemsController : ControllerBase
     {
         private readonly ITaskItemService _taskItemService;
+        private readonly ILogger<TaskItemsController> _logger;
 
-        public TaskItemsController(ITaskItemService taskItemService)
+        public TaskItemsController(ITaskItemService taskItemService, ILogger<TaskItemsController> logger)
         {
             _taskItemService = taskItemService;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
@@ -34,15 +36,22 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTaskItem([FromBody] CreateTaskItemDto taskItemDto)
+        public async Task<IActionResult> CreateTaskItem(CreateTaskItemDto taskItemDto)
         {
-            if (taskItemDto == null)
+            try
             {
-                return BadRequest();
+                _logger.LogInformation($"Received request to create TaskItem with ProjectId: {taskItemDto.ProjectId} and CategoryId: {taskItemDto.CategoryId}");
+                await _taskItemService.AddTaskItemAsync(taskItemDto);
+                _logger.LogInformation($"Successfully created TaskItem with Description: {taskItemDto.Description}");
+                return Ok();
             }
-            await _taskItemService.AddTaskItemAsync(taskItemDto);
-            return CreatedAtAction(nameof(GetTaskItemById), new { id = taskItemDto.Id }, taskItemDto);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating TaskItem");
+                return BadRequest(ex.Message);
+            }
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTaskItem(int id, [FromBody] UpdateTaskItemDto taskItemDto)
