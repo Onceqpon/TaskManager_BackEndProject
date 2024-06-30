@@ -72,6 +72,20 @@ Jeśli poświadczenia są poprawne, otrzymasz token JWT w odpowiedzi. Użyj tego
 ```
 Authorization: Bearer <your_token>
 ```
+
+Np.
+
+![image](https://github.com/Onceqpon/TaskManager_BackEndProject/assets/117514577/d9d78d13-95b0-40b5-afd3-d032a1a1780c)
+
+Kopiujemy:
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiZGVtbyIsImdlbmRlciI6Im1hbGUiLCJlbWFpbCI6IkRhd2lkQG8yLnBsIiwiZXhwIjoxNzE5NzYzMTIwLCJqdGkiOiJjYzFhZjFhMy04ZjlhLTQxNTktOWYyZS1mOWQxZDI0N2FhOTQiLCJhdWQiOiJtaXBpZSIsImlzcyI6Im1pcGllIn0.qbyq7zL2EIfoN9mnUnuqwJ3KZBik-qif3IkhTGFEmaI
+```
+I wklejamy to w tym miejscu
+
+![image](https://github.com/Onceqpon/TaskManager_BackEndProject/assets/117514577/be4a464e-75d4-460a-aa6b-1c39c03c91b2)
+
+
 ### Endpointy
 Kategorie
 ```
