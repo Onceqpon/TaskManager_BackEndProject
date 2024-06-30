@@ -56,6 +56,7 @@ Uruchom testy:
 ```
 dotnet test
 ```
+![image](https://github.com/Onceqpon/TaskManager_BackEndProject/assets/117514577/4cf100b1-d94d-4b50-9f79-bf1632bfb1c5)
 
 ### Użycie
 Uwierzytelnianie
