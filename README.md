@@ -111,6 +111,8 @@ POST /api/Tasks - Utwórz nowe zadanie
 PUT /api/Tasks/{id} - Zaktualizuj zadanie
 DELETE /api/Tasks/{id} - Usuń zadanie
 ```
+![image](https://github.com/Onceqpon/TaskManager_BackEndProject/assets/117514577/88b4c15f-83f0-4a22-ad8a-eae344c93480)
+
 
 ### Twórcy:
 ```
